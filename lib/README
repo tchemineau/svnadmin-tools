@@ -1,0 +1,42 @@
+== Welcome to ScriptHelper
+
+ScriptHelper is a POSIX shell library of common functions, to facilitate code reuse.
+
+First, I've wrote ScriptHelper to be able to send bash script to other users and
+always know what's wrong when they failed. This was the purpose of the CMD command,
+which role is to exec a command, log stdout & stderr, and check the return status.
+
+Then, I've added some functions, I wrote several times.
+
+== Description of contents
+
+*.lib.sh : library files
+tests/* : test files
+
+Each file have description of their functions, usage, options, etc..
+
+== List of libraries
+
+I try to make one lib for each purpose :
+ - message.lib.sh : messaging functions.
+ - exec.lib.sh    : execute commands, check the return code, Rollback feature
+ - ask.lib.sh     : usefull when you have to ask question to the user
+ - cli.lib.sh     : create easily Command Line Interface for interactive scripts
+ - conf.lib.sh    : deal with configuration file (where data are stored with key=value format)
+ - lock.lib.sh    : take a resource by locking it
+ - mail.lib.sh    : to prepare and send mails
+ - mutex.lib.sh   : mutex for allocating resource
+ - mysql.lib.sh   : to make mysql scripts
+ - random.lib.sh  : random number generator
+ - record.lib.sh  : record tty session
+
+== Install
+
+read INSTALL file
+
+== Usage
+
+ScriptHelper is used in those projects :
+ - Tosca (http://tosca-project.net/) - deployment scripts
+ - sshGate (http://github.com/Tauop/sshGate) - ssh proxy in bash
+ - ScriptCollection (http://github.com/Tauop/ScriptCollection) - little script to make specify tasks
