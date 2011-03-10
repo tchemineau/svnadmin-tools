@@ -15,6 +15,22 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   HOSTNAME="$(hostname)"
 
   #
+  # Function to check commands
+  #
+
+  CHECK() {
+    local cmd=
+
+    cmd="$1";
+
+    if [ -z "$(/bin/which ${cmd})" ]; then
+      echo "ERROR: Unable to find command ${cmd}"
+      exit 2
+    fi
+    return 0;
+  }
+
+  #
   # Main interpreter
   #
 
@@ -52,7 +68,7 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   # Perform some require checks
   #
 
-  . "${DIRNAME}/lib/checks.lib.sh"
+  CHECK svn
 
   #
   # Load libraries
