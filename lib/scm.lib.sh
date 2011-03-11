@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "${__REPOSITORY__:-}" != 'Loaded' ]; then
+if [ "${__SCM_WRAPPER__:-}" != 'Loaded' ]; then
 
-  __REPOSITORY__='Loaded'
+  __SCM_WRAPPER__='Loaded'
 
   # Load repository library
   CONF_GET "REPOSITORY_TYPE"

@@ -94,6 +94,7 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   #
 
   CHECK svn
+  CHECK svnadmin
 
   #
   # Load libraries
