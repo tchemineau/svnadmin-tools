@@ -6,7 +6,7 @@
 
 ROOTDIR="$(echo "$(dirname $0)/../")"
 . "${ROOTDIR}/lib/loader.lib.sh"
-. "${ROOTDIR}/lib/repositories.lib.sh"
+. "${ROOTDIR}/lib/repository.lib.sh"
 
 # -----------------------------------------------------------------------------
 #  Local functions
