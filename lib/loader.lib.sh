@@ -4,10 +4,11 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
 
   __LOADER__='Loaded'
 
+  # ---------------------------------------------------------------------------
+
   #
   # Constants
   #
-
   DIRNAME="$(dirname "$0")"
   SCRIPTNAME="$(basename "$0")"
   FILENAME="$(cd ${DIRNAME} 2>/dev/null && /bin/pwd)/${SCRIPTNAME}"
@@ -15,10 +16,11 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   HOSTNAME="$(hostname)"
   PROMPT=0
 
+  # ---------------------------------------------------------------------------
+
   #
   # Function to check commands
   #
-
   CHECK() {
     local cmd=
 
@@ -34,7 +36,6 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   #
   # Print headers
   #
-
   CLI_HEADER() {
     local force=
 
@@ -56,7 +57,6 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   #
   # Main interpreter
   #
-
   CLI_RUN_SVNTOOL() {
 
     if [ "$#" != "0" ]; then
@@ -69,16 +69,16 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
     return 0
   }
 
+  # ---------------------------------------------------------------------------
+
   #
   # Load libraries by invoking the helper
   #
-
   . "${DIRNAME}/lib/helper.lib.sh"
 
   #
   # Auto set some final parameters
   #
-
   CONF_SET_FILE "${DIRNAME}/etc/svntool.conf"
 
 fi # Loaded
