@@ -12,8 +12,10 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   DIRNAME="$(dirname "$0")"
   SCRIPTNAME="$(basename "$0")"
   FILENAME="$(cd ${DIRNAME} 2>/dev/null && /bin/pwd)/${SCRIPTNAME}"
-  DIRNAME="$(dirname "$(dirname "${FILENAME}")")"
   HOSTNAME="$(hostname)"
+  CURRDIR="$(/bin/pwd)"
+  ROOTDIR="$(dirname "$(dirname "${FILENAME}")")"
+  TEMPDIR="/tmp/svntool"
   PROMPT=0
 
   # ---------------------------------------------------------------------------
@@ -74,12 +76,23 @@ if [ "${__LOADER__:-}" != 'Loaded' ]; then
   #
   # Load libraries by invoking the helper
   #
-  . "${DIRNAME}/lib/helper.lib.sh"
+  . "${ROOTDIR}/lib/helper.lib.sh"
+
+  #
+  # Create temporary directory
+  #
+  if [ ! -d "${TEMPDIR}" ]; then
+    mkdir "${TEMPDIR}"
+  fi
+  if [ ! -w "${TEMPDIR}" ]; then
+    echo "ERROR: Unable to write to ${TEMPDIR}"
+    exit 2
+  fi
 
   #
   # Auto set some final parameters
   #
-  CONF_SET_FILE "${DIRNAME}/etc/svntool.conf"
+  CONF_SET_FILE "${ROOTDIR}/etc/svntool.conf"
 
 fi # Loaded
 
